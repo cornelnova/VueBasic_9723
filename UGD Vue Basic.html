@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <title>UGD Vue Basic</title>
+    <link rel="stylesheet" href="" />
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        Tebak Angka 1 sampai 10: <input type="number" v-model="userInput">
+        <div><b>{{ message }}</b></div>
+    </div>
+
+    <script src="app.js"></script>
+
+    <!-- Footer -->
+    <footer class="page-footer font-small blue">
+
+        <!-- Copyright -->
+        <div class="footer-copyright text-center py-3">Cornelleo Nova Pradipta | 180709723 | B </a>
+        </div>
+        <!-- Copyright -->
+
+    </footer>
+    <!-- Footer -->
+</body>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            userInput: "",
+            randomNumber: 5
+        },
+        methods: {
+            getRandomNumber: function (min, max) {
+                return Math.floor(Math.random() * (max - min + 1)) + min;
+            }
+        },
+        computed: {
+            message: function () {
+                if (this.userInput == this.randomNumber) {
+                    this.randomNumber = this.getRandomNumber(1, 10);
+                    return 'Selamat Jawaban Anda Benar';
+                } else {
+                    this.randomNumber = this.getRandomNumber(1, 10);
+                    return 'Jawaban Anda Salah !!!!';
+                }
+
+            }
+        }
+    });
+</script>
+
+</html>
